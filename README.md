@@ -48,4 +48,5 @@ $ ./mvnw package
 	$ cf start api-sample
 	```
 
-The API Sample application has two REST 
+The API Sample application has two REST endpoints: `/version` and `/apps`. Each of these endpoints invoke the Data
+Flow server's API. See the `DemoApplication` class for more details.
