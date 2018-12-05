@@ -1,0 +1,9 @@
+---
+spring:
+  profiles: cloud
+
+scdf-demo:
+  access-token-url: ${vcap.services.dataflow.credentials.access-token-url}
+  client-id: ${vcap.services.dataflow.credentials.client-id}
+  client-secret: ${vcap.services.dataflow.credentials.client-secret}
+  dataflow-url: ${vcap.services.dataflow.credentials.dataflow-url}
