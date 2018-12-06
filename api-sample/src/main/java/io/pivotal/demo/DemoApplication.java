@@ -5,7 +5,9 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
+import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -30,6 +32,14 @@ public class DemoApplication {
 
 	@Autowired
 	WebClient.Builder webClientBuilder;
+
+	private final Configuration jsonPathConfiguration;
+
+	public DemoApplication() {
+		jsonPathConfiguration = Configuration.builder()
+				.options(Option.SUPPRESS_EXCEPTIONS)
+				.build();
+	}
 
 	@Bean
 	Mono<String> tokenProvider() {
@@ -67,7 +77,7 @@ public class DemoApplication {
 }
 
 	private Flux<String> appBodyToFlux(Map body) {
-		final List<String> names = JsonPath.parse(body).read("$._embedded.appRegistrationResourceList[*].name");
+		final List<String> names = JsonPath.parse(body, jsonPathConfiguration).read("$._embedded.appRegistrationResourceList[*].name");
 		return Flux.fromIterable(names);
 	}
 
