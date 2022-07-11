@@ -1,3 +1,6 @@
+# scdf-for-pcf-samples is no longer actively maintained by VMware, Inc.
+
+
 # Sample Applications for SCDF for PCF
 
 This repository contains samples for use with [SCDF for PCF](https://docs.pivotal.io/scdf).
